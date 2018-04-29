@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>봉규차</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #sideNav{
+            position: fixed;
+            width: 15%;
+            height: 100%;
+            background-color: #393939;
+            top: 0;
+            left: 0;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .menu a{
+            cursor:pointer;
+            font-weight: bold;
+        }
+
+        .menu .hide{
+            display:none;
+            font-size: 15px;
+            color: white;
+
+        }
+        .hide li {
+            background-color: #898989;
+        }
+        .hide li a {
+            color: white;
+            margin-left: 20px;
+        }
+         .hide li a:hover {
+            color: rgb(255, 206, 0);
+
+        }
+
+        ul {
+
+            list-style-type: none;
+            padding: 0;
+
+        }
+
+        li a {
+            display: block;
+            color: #ffffff;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        #btn_menu {
+            z-index: 2;
+            position: absolute;
+            margin-top: 250px;
+            margin-left: 15%;
+            background-color: white;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .section1 {
+            position: relative;
+            left: 15%;
+            padding: 90px 200px;
+        }
+        .smaill_car_info{
+
+          position: relative;
+          width: 242px;
+          height: 400px;
+          margin: 30px 10px;
+          display: inline-block;
+          border : 1px solid black;
+
+        }
+        .small_Cont{
+           position: absolute;
+           padding: 3px;
+           width:240px;
+           height:30px;
+           background-color:black;
+           opacity:0.5;
+           color: white;
+           text-align:center ;
+           top: 200px;
+        }
+        .car_detail_info{
+          position: absolute;
+          width: 240px;
+          padding: 20px;
+        }
+        .car_detail_info em{
+          margin: 0 30px 0 10px;
+          font-style: normal;
+        }
+        .car_detail_info li{
+          margin : 2px;
+        }
+        #copyright{
+            position: absolute;
+            width: 100%;
+            height: 70px;
+            padding: 20px;
+            text-align: center;
+            bottom: 0;
+            background-color: gray;
+            opacity: 0.7;
+            font-weight: bold;
+        }
+
+/*        창줄였을 때 */
+        @media screen and (max-width : 1000px) {
+            .section1{
+                height: 1000px;
+            }
+        }
+        @media screen and (max-width : 930px) {
+            .section1{
+                height: 930px;
+            }
+        }
+        @media screen and (max-width : 800px) {
+            .section1{
+                height: 800px;
+            }
+        }
+        @media screen and (max-width : 700px) {
+            .section1{
+                height: 700px;
+            }
+        }
+         @media screen and (max-width : 500px) {
+
+            #sideNav {
+                width: 100%;
+                height: auto;
+            }
+            #sideNav a {
+
+                display: inline-block;
+                float: left;
+            }
+            .section1 {
+                position: relative;
+                margin-left: 2px;
+                margin-top: 50%;
+                height: 100%;
+
+            }
+             #btn_menu{
+                display: none;
+             }
+             #copyright{
+                 display: none;
+             }
+        }
+
+    </style>
+      <script>
+
+      $(document).ready(function(){
+
+            // menu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+            $(".menu>a").click(function(){
+                var submenu = $(this).next("ul");
+
+                if( submenu.is(":visible") ){
+                    submenu.slideUp();
+                }else{
+                    submenu.slideDown();
+                }
+            });
+
+
+        });
+
+
+          //메뉴 접고 펼치는 부분
+          var btn_status = false;
+          function btn_Click(){
+               if(btn_status == false)
+                {
+                    document.getElementById("sideNav").style.display = "none";
+                    document.getElementById("btn_menu").style.marginLeft = 0;
+                    document.getElementById("menu_img").src = "img/backmenu.png";
+                    btn_status = true;
+
+                }else{
+
+                     document.getElementById("sideNav").style.display = "block";
+                    document.getElementById("btn_menu").style.marginLeft = "15%";
+                    document.getElementById("menu_img").src = "img/menu.png";
+                    btn_status = false;
+                }
+          }
+          //차사진 누르면 상세정보 띄워주는 부분
+          function car_Click(temp){
+              if(temp == info1)
+              {
+                alret("dd");
+              }
+          }
+    </script>
+</head>
+
+<body>
+
+    <div id="sideNav">
+        <a  href="index.html" ><div style="background-color: white"><img src="img/car.png" width="30%" style="margin: 10px"><img src="img/logo_name.png" width="50%"></div></a>
+        <ul>
+            <li class="menu">
+                <a > 가격별 차량 추천 </a>
+                <ul class="hide">
+                    <li><a href="car_1000.html"> 1000만원 </a></li>
+                    <li><a href="car_2000.html"> 2000만원 </a></li>
+                    <li><a href="car_3000.html"> 3000만원 이상 </a></li>
+                </ul>
+            </li>
+
+            <li class="menu">
+                <a >차량 종류 </a>
+                <ul class="hide">
+                    <li><a href="car_info_1.html"> 소형 </a></li>
+                    <li><a href="car_info_2.html"> 준중형 </a></li>
+                    <li><a href="car_info_3.html"> 중형 </a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+    <div id="btn_menu" onclick="btn_Click();"><img id="menu_img" src="img/menu.png"></div>
+<!--  차 메뉴 -->
+    <div class="section1">
+      <div  id="img_info_1" class="smaill_car_info">
+        <img src="img/mohavi.png" style=" width:240px; height:200px">
+        <div class="small_Cont" > MoHavi  </div>
+        <ul class="car_detail_info">
+          <li><EM>가격</EM>41,100,000원</li>
+          <li><EM>연비</EM>9.8km/l</li>
+          <li><EM>출력</EM>260hp</li>
+          <li><EM>토크</EM>190.0kg.m</li>
+          <li><EM>배기</EM>2,959cc</li>
+          <li><EM>엔진</EM>V6</li>
+          <li><EM>연료</EM>디젤</li>
+        </ul>
+      </div>
+      <div  id="img_info_1" class="smaill_car_info">
+        <img src="img/k9.png" style=" width:240px; height:200px">
+        <div class="small_Cont" > k9  </div>
+        <ul class="car_detail_info">
+          <li><EM>가격</EM>54,900,000원</li>
+          <li><EM>연비</EM>7.6km/l</li>
+          <li><EM>출력</EM>315hp</li>
+          <li><EM>토크</EM>40.5kg.m</li>
+          <li><EM>배기</EM>3,778cc</li>
+          <li><EM>엔진</EM>V6</li>
+          <li><EM>연료</EM>가솔린</li>
+        </ul>
+      </div>
+      <div  id="img_info_1" class="smaill_car_info">
+        <img src="img/sorento.png" style=" width:240px; height:200px">
+        <div class="small_Cont" >  Sorento </div>
+        <ul class="car_detail_info">
+          <li><EM>가격</EM>33,450,000원</li>
+          <li><EM>연비</EM>8.7km/l</li>
+          <li><EM>출력</EM>240hp</li>
+          <li><EM>토크</EM>36.0kg.m</li>
+          <li><EM>배기</EM>1,998cc</li>
+          <li><EM>엔진</EM>14</li>
+        </ul>
+      </div>
+    </div>
+
+
+</body>
+
+</html>
